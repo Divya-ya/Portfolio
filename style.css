@@ -1,28 +1,165 @@
+/* General Body Styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background: #1f2937; /* Dark gray blue background */
+  color: #f9fafb; /* Light text color */
+  box-sizing: border-box;
 }
+
+/* Wrapper centers main content */
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0; /* padding moved to body */
+}
+
+.topbar {
+  width: 100%;
+  background: #1f2937; /* or use your favorite color */
+  text-align: center;
+  padding: 30px 0 10px 0; /* extra padding for impact */
+}
+
+.topbar-name {
+  display: inline-block;
+  font-size: clamp(3rem, 8vw, 7rem); /* biggest possible within screen, responsive */
+  font-weight: 900; /* boldest */
+  color: #fff;
+  letter-spacing: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1;
+}
+
+/* Header Styling - Flexbox with left name and centered nav */
 header {
-    background-color: #222;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center nav container horizontally */
+  background: #2563eb; /* Bright blue */
+  padding: 20px 40px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  gap: 20px; /* spacing between name and nav */
 }
+
+
+/* Left aligned name container */
+.header-left {
+  margin-right: auto; /* pushes this div to the far left */
+}
+
+.header-left h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #fff;
+}
+
+nav {
+  position: sticky; /* or use 'fixed' for always at top */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: #2563eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 0;
+  z-index: 200; /* above all page content */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+}
+
 nav a {
-    color: #fff;
+  color: #dbeafe;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 0 26px;
+  font-size: 1.18rem;
+  transition: color 0.3s;
+}
+nav a:hover {
+  color: #bfdbfe;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .main-navbar {
+    padding: 11px 0;
+  }
+  .main-navbar a {
     margin: 0 10px;
-    text-decoration: none;
+    font-size: 1rem;
+  }
 }
+
+
+/* Section Styling – Each section has its own rectangle */
 section {
-    margin: 40px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+  background: #374151; /* Rectangular box background */
+  margin: 40px 0;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
 }
+
+/* Section headers */
+section h2 {
+  border-bottom: 3px solid #2563eb;
+  padding-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #bfdbfe;
+}
+
+/* Lists in Experience or Projects */
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+/* Job Titles */
+.job h3 {
+  color: #60a5fa;
+  margin-top: 0;
+}
+
+/* Footer Styling */
 footer {
-    text-align: center;
-    padding: 10px;
-    background: #eee;
+  text-align: center;
+  padding: 20px 0;
+  background: #2563eb;
+  color: #dbeafe;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 600px) {
+  nav.header-center {
+    gap: 15px;
+  }
+  nav.header-center a {
+    font-size: 0.9rem;
+  }
+  section {
+    margin: 20px 0;
+    padding: 20px;
+  }
+  .header-left h1 {
+    font-size: 1.8rem;
+  }
+  header {
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+  }
+  .header-left {
+    margin-right: 0;
+  }
 }
