@@ -51,77 +51,120 @@ body {
 
 /* Push content below fixed navbar */
 .main-area {
-  margin-top: 60px; /* height of navbar */
+  margin-top: 40px; /* height of navbar */
 }
 
 .hero-section {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 5vw 10vw;
-  background: #f8fafc; /* clean, light background */
-  min-height: 100vh; /* makes hero section fill the whole screen */
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
-  margin-top: 60px; /* if you have fixed navbar */
-  gap: 5vm;
+  padding: 0;
+  margin: 0;
+  background: #f8fafc;
+  overflow: hidden;
+  gap: 0;
 }
 
 .hero-info {
+  flex: 1 1 0;
+  padding-left: 7vw;
+  padding-right: 3vw;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  max-width: 38vw;
 }
 
 .hero-info h1 {
-  font-size: 4rem;
-  margin: 0;
+  font-size: clamp(2rem, 7vw, 5rem);
+  margin: 0 0 1rem 0;
   color: #18181b;
   font-weight: 900;
   line-height: 1.1;
 }
 
 .hero-info .dot {
-  color: #2563eb; /* accent blue dot */
+  color: #2563eb;
 }
 
 .hero-info h2 {
-  margin: 16px 0 8px 0;
+  margin: 0 0 1rem 0;
   color: #2563eb;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
   font-weight: 700;
-  letter-spacing: 0.5px;
 }
 
 .hero-info .subtitle {
-  margin: 0 0 24px 0;
+  margin: 0;
   color: #475569;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.hero-pic {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;  /* match the section height */
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .hero-pic img {
-  width: 400px;
-  height: 400px;
+  height: 100vh;        /* fill the parent's height */
+  aspect-ratio: 1/1;    /* always keep circle, no stretch */
+  width: auto;          /* width auto-calculates to match height */
+  max-width: 90vw;
+  object-fit: cover;
   background: #fff;
-  box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+  display: block;
 }
+
 
 @media (max-width: 900px) {
   .hero-section {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
-    padding: 40px 5vw 30px 5vw;
-    gap: 32px;
-    text-align: center;
+    min-height: 100vh;
+    width: 100vw;
+    padding: 0;
   }
   .hero-info {
+    padding: 0 5vw;
+    max-width: 100vw;
     align-items: center;
+    text-align: center;
+  }
+  .hero-pic {
+    height: auto;
+    width: 100vw;
+    justify-content: center;
   }
   .hero-pic img {
-    width: 220px;
-    height: 220px;
+    height: min(50vw, 220px); /* keep image big but proportional on mobile */
+    width: min(50vw, 220px);
+    max-width: 90vw;
+    max-height: 60vw;
   }
 }
+
+@media (max-width: 600px) {
+  .hero-pic img {
+    height: 44vw;
+    width: 44vw;
+    min-width: 140px;
+    min-height: 140px;
+    max-width: 95vw;
+    max-height: 62vw;
+  }
+}
+
 
 /* Section Styling */
 section {
