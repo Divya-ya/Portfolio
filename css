@@ -1,0 +1,215 @@
+/* General Body Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background: #1f2937; /* Dark gray blue background */
+  color: #f9fafb; /* Light text color */
+  box-sizing: border-box;
+}
+
+/* Wrapper centers main content */
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Navigation Bar (Top fixed bar) */
+.sidebar-nav {
+  position: fixed;       /* stick at top */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px;
+  background: #2563eb;   /* Bright blue */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; /* Align links left */
+  padding: 0 32px 0 0;   /* Right padding */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.sidebar-nav a {
+  color: #dbeafe;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0 16px;
+  font-size: 1.15rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, background 0.2s;
+}
+
+.sidebar-nav a:hover {
+  color: #fff;
+  background: #1e40af;
+  border-radius: 4px;
+}
+
+/* Push content below fixed navbar */
+.main-area {
+  margin-top: 40px; /* height of navbar */
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  background: #f8fafc;
+  overflow: hidden;
+  gap: 0;
+}
+
+.hero-info {
+  flex: 1 1 0;
+  padding-left: 7vw;
+  padding-right: 3vw;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 38vw;
+}
+
+.hero-info h1 {
+  font-size: clamp(2rem, 7vw, 5rem);
+  margin: 0 0 1rem 0;
+  color: #18181b;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.hero-info .dot {
+  color: #2563eb;
+}
+
+.hero-info h2 {
+  margin: 0 0 1rem 0;
+  color: #2563eb;
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
+  font-weight: 700;
+}
+
+.hero-info .subtitle {
+  margin: 0;
+  color: #475569;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.hero-pic {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;  /* match the section height */
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.hero-pic img {
+  height: 100vh;        /* fill the parent's height */
+  aspect-ratio: 1/1;    /* always keep circle, no stretch */
+  width: auto;          /* width auto-calculates to match height */
+  max-width: 90vw;
+  object-fit: cover;
+  background: #fff;
+  display: block;
+}
+
+
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 24px 5vw;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  .hero-pic {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-pic {
+    height: auto;
+    width: 100vw;
+    justify-content: center;
+  }
+  .hero-pic img {
+    width: 60vw;
+    max-width: 280px;
+    height: auto;
+    /* Makes image always proportional, never too tall */
+    border: 7px solid #2563eb;
+    background: #fff;
+    box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+  }
+    .hero-info {
+    max-width: 100vw;
+    align-items: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-pic img {
+    width: 72vw;
+    max-width: 210px;
+    height: auto;
+    border: 5px solid #2563eb;
+  }
+  .hero-section {
+    padding: 18px 2vw;
+    gap: 1rem;
+    min-height: 70vh;
+  }
+}
+
+
+/* Section Styling */
+section {
+  background: #374151;
+  margin: 40px 0;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+section h2 {
+  border-bottom: 3px solid #2563eb;
+  padding-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #bfdbfe;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background: #2563eb;
+  color: #dbeafe;
+  width: 100%;
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
+  bottom: 0;
+}
