@@ -11,100 +11,127 @@ body {
 .wrapper {
   max-width: 900px;
   margin: 0 auto;
-  padding: 0; /* padding moved to body */
+  padding: 0;
 }
 
-.topbar {
-  width: 100%;
-  background: #1f2937; /* or use your favorite color */
-  text-align: center;
-  padding: 30px 0 10px 0; /* extra padding for impact */
-}
-
-.topbar-name {
-  display: inline-block;
-  font-size: clamp(3rem, 8vw, 7rem); /* biggest possible within screen, responsive */
-  font-weight: 900; /* boldest */
-  color: #fff;
-  letter-spacing: 2px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1;
-}
-
-/* Header Styling - Flexbox with left name and centered nav */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* center nav container horizontally */
-  background: #2563eb; /* Bright blue */
-  padding: 20px 40px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  gap: 20px; /* spacing between name and nav */
-}
-
-
-/* Left aligned name container */
-.header-left {
-  margin-right: auto; /* pushes this div to the far left */
-}
-
-.header-left h1 {
-  font-size: 2.5rem;
-  margin: 0;
-  color: #fff;
-}
-
-nav {
-  position: sticky; /* or use 'fixed' for always at top */
+/* Navigation Bar (Top fixed bar) */
+.sidebar-nav {
+  position: fixed;       /* stick at top */
   top: 0;
   left: 0;
   width: 100vw;
-  background: #2563eb;
+  height: 60px;
+  background: #2563eb;   /* Bright blue */
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  padding: 18px 0;
-  z-index: 200; /* above all page content */
-  box-shadow: 0 4px 8px rgba(0,0,0,0.12);
+  justify-content: flex-start; /* Align links left */
+  padding: 0 32px 0 0;   /* Right padding */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-nav a {
+.sidebar-nav a {
   color: #dbeafe;
   font-weight: 600;
   text-decoration: none;
-  margin: 0 26px;
-  font-size: 1.18rem;
-  transition: color 0.3s;
-}
-nav a:hover {
-  color: #bfdbfe;
-  text-decoration: underline;
+  padding: 0 16px;
+  font-size: 1.15rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s, background 0.2s;
 }
 
-@media (max-width: 600px) {
-  .main-navbar {
-    padding: 11px 0;
+.sidebar-nav a:hover {
+  color: #fff;
+  background: #1e40af;
+  border-radius: 4px;
+}
+
+/* Push content below fixed navbar */
+.main-area {
+  margin-top: 60px; /* height of navbar */
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5vw 10vw;
+  background: #f8fafc; /* clean, light background */
+  min-height: 100vh; /* makes hero section fill the whole screen */
+  box-sizing: border-box;
+  margin-top: 60px; /* if you have fixed navbar */
+  gap: 5vm;
+}
+
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-info h1 {
+  font-size: 4rem;
+  margin: 0;
+  color: #18181b;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.hero-info .dot {
+  color: #2563eb; /* accent blue dot */
+}
+
+.hero-info h2 {
+  margin: 16px 0 8px 0;
+  color: #2563eb;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.hero-info .subtitle {
+  margin: 0 0 24px 0;
+  color: #475569;
+  font-size: 1.1rem;
+}
+
+.hero-pic img {
+  width: 400px;
+  height: 400px;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 5vw 30px 5vw;
+    gap: 32px;
+    text-align: center;
   }
-  .main-navbar a {
-    margin: 0 10px;
-    font-size: 1rem;
+  .hero-info {
+    align-items: center;
+  }
+  .hero-pic img {
+    width: 220px;
+    height: 220px;
   }
 }
 
-
-/* Section Styling – Each section has its own rectangle */
+/* Section Styling */
 section {
-  background: #374151; /* Rectangular box background */
+  background: #374151;
   margin: 40px 0;
   padding: 30px 40px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.25);
 }
 
-/* Section headers */
 section h2 {
   border-bottom: 3px solid #2563eb;
   padding-bottom: 10px;
@@ -113,17 +140,10 @@ section h2 {
   color: #bfdbfe;
 }
 
-/* Lists in Experience or Projects */
 ul {
   list-style-type: disc;
   padding-left: 20px;
   line-height: 1.6;
-}
-
-/* Job Titles */
-.job h3 {
-  color: #60a5fa;
-  margin-top: 0;
 }
 
 /* Footer Styling */
@@ -132,34 +152,9 @@ footer {
   padding: 20px 0;
   background: #2563eb;
   color: #dbeafe;
-  position: relative;
-  bottom: 0;
   width: 100%;
   font-weight: 600;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-/* Responsive tweaks */
-@media screen and (max-width: 600px) {
-  nav.header-center {
-    gap: 15px;
-  }
-  nav.header-center a {
-    font-size: 0.9rem;
-  }
-  section {
-    margin: 20px 0;
-    padding: 20px;
-  }
-  .header-left h1 {
-    font-size: 1.8rem;
-  }
-  header {
-    flex-direction: column;
-    gap: 10px;
-    justify-content: center;
-  }
-  .header-left {
-    margin-right: 0;
-  }
+  position: relative;
+  bottom: 0;
 }
