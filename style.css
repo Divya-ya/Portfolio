@@ -14,6 +14,17 @@ body {
   padding: 0;
 }
 
+/* Nav logo placeholder */
+.nav-logo {
+  width: 42px;
+  height: 42px;
+  margin-right: 16px;
+  flex-shrink: 0;
+  /* Center vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* Navigation Bar (Top fixed bar) */
 .sidebar-nav {
   position: fixed;       /* stick at top */
@@ -124,7 +135,40 @@ body {
   background: #fff;
   display: block;
 }
-
+/* Hero profile image - default (large in hero section) */
+#profile-pic {
+  transition:
+    width 0.5s cubic-bezier(.4,2,.3,1),
+    height 0.5s cubic-bezier(.4,2,.3,1),
+    border-radius 0.5s,
+    box-shadow 0.5s,
+    position 0.5s,
+    left 0.5s,
+    top 0.5s,
+    transform 0.5s;
+  z-index: 10;
+}
+/* When scrolled: shrink and move profile to nav */
+.shrunk #profile-pic {
+  position: fixed;
+  left: 23px;          /* nearly matches .nav-logo position */
+  top: 9px;            /* vertically centers in navbar height */
+  width: 42px !important;
+  height: 42px !important;
+  min-width: 0;
+  min-height: 0;
+  max-width: 42px;
+  max-height: 42px;
+  border-radius: 8px;  /* or 50% for a circular logo */
+  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+  object-fit: cover;
+  background: #fff;
+  border: 2px solid #2563eb;
+  transform: translateZ(0);
+  pointer-events: none;
+}
+/* Hide nav-logo when profile photo is up there */
+.shrunk .nav-logo { display: none; }
 
 @media (max-width: 900px) {
   .hero-section {
