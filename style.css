@@ -109,6 +109,7 @@ body {
   min-width: 0;
   min-height: 0;
   overflow: hidden;
+  position: relative;
 }
 
 .hero-pic img {
@@ -120,19 +121,11 @@ body {
 }
 /* Hero profile image - default (large in hero section) */
 #profile-pic {
-  transition:
-    width 0.5s ease,
-    height 0.5s ease,
-    border-radius 0.5s ease,
-    box-shadow 0.5s ease,
-    position 0.5s ease,
-    left 0.5s ease,
-    top 0.5s ease,
-    transform 0.5s ease;
-
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), border-radius 0.4s, box-shadow 0.4s;
   z-index: 10;
   display: block;
 }
+
 
 /* When scrolled: shrink and move profile to nav */
 .shrunk #profile-pic {
@@ -177,11 +170,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .hero-pic {
     height: auto;
-    width: 100vw;
-    justify-content: center;
   }
   .hero-pic img {
     width: 60vw;

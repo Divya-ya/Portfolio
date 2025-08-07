@@ -4,75 +4,85 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!profilePic || !navLogo) return;
 
-  // Function to get latest positions and sizes
-  function updatePositions() {
+  // Get offset of element center with reference to page
+  function getElementCenter(el) {
+    const rect = el.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const scrollX = window.scrollX || window.pageXOffset;
     return {
-      picRect: profilePic.getBoundingClientRect(),
-      logoRect: navLogo.getBoundingClientRect()
+      x: rect.left + rect.width / 2 + scrollX,
+      y: rect.top + rect.height / 2 + scrollY,
+      width: rect.width,
+      height: rect.height
     };
   }
 
-  // You may want to debounce or throttle scroll for performance on heavy pages
-  window.addEventListener('scroll', () => {
-    const { picRect, logoRect } = updatePositions();
+  let start = null;
+  let end = null;
 
-    // Calculate translation distances
-    const deltaX = logoRect.left - picRect.left;
-    const deltaY = logoRect.top - picRect.top;
+  // Update reference positions
+  function recalcPositions() {
+    start = getElementCenter(profilePic); // Hero image at rest
+    end = getElementCenter(navLogo);      // Logo position in nav bar
+  }
 
-    // Calculate the scaling factors
-    const scaleX = logoRect.width / picRect.width;
-    const scaleY = logoRect.height / picRect.height;
+  function doTransform(progress) {
+    // interpolate between start and end
+    const tx = (end.x - start.x) * progress;
+    const ty = (end.y - start.y) * progress;
+    const scale = 1 + (end.width / start.width - 1) * progress;
 
-    // Determine scroll progress from when the bottom of hero pic reaches nav to when it fully reaches (you can adjust 200px padding)
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const heroBottom = scrollTop + picRect.bottom; // absolute bottom position of hero pic in page coords
-    const navBottom = scrollTop + logoRect.bottom; // absolute bottom position of nav logo placeholder
+    profilePic.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
 
-    // Define start and end scroll positions for transition
-    // Start transition when hero image bottom reaches navbar bottom
-    const startTransition = heroBottom - navBottom; // zero or negative means hero is at or above nav logo
-    const transitionRange = 150; // pixels over which to animate transition
+    // Optional: rounded corners for logo
+    profilePic.style.borderRadius = progress > 0.96 ? '8px' : '';
+    profilePic.style.boxShadow = progress > 0.8
+      ? '0 2px 8px rgba(37,99,235,0.08)'
+      : '';
+    profilePic.style.border = progress > 0.95
+      ? '2px solid #2563eb'
+      : '7px solid #2563eb';
+    profilePic.style.background = '#fff';
+    profilePic.style.pointerEvents = 'none'; // Unclickable during move
+    profilePic.style.zIndex = progress > 0.7 ? '1001' : '10';
+  }
 
-    // Calculate normalized progress (clamp between 0 and 1)
+  function resetTransform() {
+    profilePic.style.transform = '';
+    profilePic.style.borderRadius = '';
+    profilePic.style.boxShadow = '';
+    profilePic.style.border = '7px solid #2563eb';
+    profilePic.style.pointerEvents = '';
+    profilePic.style.zIndex = '10';
+  }
+
+  function onScroll() {
+    const heroRect = profilePic.getBoundingClientRect();
+    // Start transition a little before image leaves viewport (adjust as desired)
+    const transitionStart = 0;
+    const transitionEnd = window.innerHeight * 0.25; // 25% of viewport is left
+
     let progress = 0;
-    if (startTransition < transitionRange && startTransition > 0) {
-      progress = 1 - startTransition / transitionRange;
-    } else if (startTransition <= 0) {
-      progress = 1;
+    if (heroRect.top < transitionEnd) {
+      progress = Math.min(1, (transitionEnd - heroRect.top) / (transitionEnd - transitionStart));
     } else {
       progress = 0;
     }
-
-    // Interpolate transform values
-    const translateX = deltaX * progress;
-    const translateY = deltaY * progress;
-    // Use uniform scaling for smoothness; adjust if needed
-    const scale = 1 - (1 - scaleX) * progress;
-
     if (progress > 0) {
-      profilePic.style.position = 'fixed';
-      profilePic.style.top = picRect.top + 'px';
-      profilePic.style.left = picRect.left + 'px';
-      profilePic.style.transformOrigin = 'top left';
-      profilePic.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      profilePic.style.transition = 'transform 0.1s linear';
-      profilePic.style.zIndex = '1001'; // above navbar links
+      doTransform(progress);
     } else {
-      // Reset styles to default when progress is zero
-      profilePic.style.position = '';
-      profilePic.style.top = '';
-      profilePic.style.left = '';
-      profilePic.style.transform = '';
-      profilePic.style.transition = '';
-      profilePic.style.zIndex = '';
-      profilePic.style.transformOrigin = '';
+      resetTransform();
     }
-  });
+  }
 
-  // Also update on window resize to recalculate positions if necessary
+  // Initial calculation at load
+  recalcPositions();
+  onScroll();
+
+  // Listen for scroll and resize
+  window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', () => {
-    // Optional: trigger scroll event to recalc immediately
-    window.dispatchEvent(new Event('scroll'));
+    recalcPositions();
+    onScroll();
   });
 });
