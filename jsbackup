@@ -1,0 +1,63 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const heroPic = document.querySelector('.hero-pic');
+  const navLogo = document.querySelector('.nav-logo');
+
+  if (!heroPic || !navLogo) return;
+
+  function getElementTopLeft(el) {
+    const rect = el.getBoundingClientRect();
+    const scrollY = window.scrollY || window.pageYOffset;
+    const scrollX = window.scrollX || window.pageXOffset;
+    return {
+      x: rect.left + scrollX,
+      y: rect.top + scrollY,
+      width: rect.width,
+      height: rect.height,
+    };
+  }
+
+  let start = null;
+  let end = null;
+
+  function recalcPositions() {
+    start = getElementTopLeft(heroPic);
+    end = getElementTopLeft(navLogo);
+  }
+
+  function doTransform(progress) {
+    const tx = (end.x - start.x) * progress;
+    const ty = (end.y - start.y) * progress;
+    // Scale interpolates down from 1 to smaller logo size smoothly
+    const scale = 1 - (1 - end.width / start.width) * progress;
+
+    heroPic.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+  }
+
+  function resetTransform() {
+    heroPic.style.transform = '';
+  }
+
+  function onScroll() {
+    const scrollTop = window.scrollY || window.pageYOffset;
+    const totalDistance = start.y - end.y;
+
+    let progress = (start.y - scrollTop - end.height / 2) / totalDistance;
+    progress = 1 - progress;
+    progress = Math.min(Math.max(progress, 0), 1);
+
+    if (progress > 0) {
+      doTransform(progress);
+    } else {
+      resetTransform();
+    }
+  }
+
+  recalcPositions();
+  onScroll();
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    recalcPositions();
+    onScroll();
+  });
+});
