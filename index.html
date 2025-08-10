@@ -7,7 +7,19 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="hero-section">
+  
+  <!-- ===== Navigation ===== -->
+  <header>
+    <nav class="sidebar-nav" aria-label="Main Navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id = "home" class="hero-section">
     <div class="hero-info">
       <h1>Hello<span class="dot">.</span></h1>
       <h2>It's Divya — a software enthusiast</h2>
@@ -16,17 +28,15 @@
       </p>
     </div>
     <div class="hero-pic">
-      <img src="profile.png" alt="Divya" id="profile-pic" />
+      <img src="profile.png" alt="Portrait of Divya" id="profile-pic" />
     </div>
-  </div>
-  <nav class="sidebar-nav">
-    <div class="nav-logo"></div>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="main-content">
+  </section>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-content">
     <div class="wrapper">
+      
+      <!-- About Section -->
       <section id="about">
         <h2>About Me</h2>
         <p>
@@ -35,36 +45,49 @@
           a testament to my dedication to coding and problem-solving, showcasing my 
           capabilities across a diverse tech stack.
         </p>
+
         <h3>My Skillsets</h3>
-        <p><b>Primary Skills:</b> My core programming foundation includes Python, C++, 
-          HTML, CSS, basic SQL, and Java fundamentals. I'm constantly honing these 
-          skills to build robust and efficient applications.</p>
-        <p><b>Secondary Skills:</b> I'm also keenly interested in automation and 
-          data analysis. I have hands-on experience and continuous learning in tools 
-          like Power Automate, Excel, and Power BI, keen to contribute to streamlined 
-          systems and data-driven insights.</p>
+        <p><b>Primary Skills:</b> Python, C++, HTML, CSS, basic SQL, and Java fundamentals.  
+           I constantly refine these skills to build robust and efficient applications.
+        </p>
+        <p><b>Secondary Skills:</b> Automation and data analysis using Power Automate, Excel, and Power BI  
+           — aimed at contributing to streamlined systems and data-driven insights.
+        </p>
+
         <h3>My Drive</h3>
         <p>
-          I'm always eager to learn new technologies as per project requirements, 
-          ensuring I can adapt and deliver effectively. I'm also exploring freelancing 
-          opportunities because, well, good ideas shouldn't wait.
+          I’m always eager to learn new technologies as per project requirements, 
+          ensuring I can adapt and deliver effectively. I’m currently exploring 
+          freelancing opportunities for innovative projects.
         </p>
       </section>
+
+      <!-- Projects Section -->
       <section id="projects">
         <h2>Projects</h2>
         <ul>
-          <li><strong>Project 1:</strong> Description</li>
-          <li><strong>Project 2:</strong> Description</li>
+          <li><strong>Project 1:</strong> Description of Project 1</li>
+          <li><strong>Project 2:</strong> Description of Project 2</li>
         </ul>
       </section>
+
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Let’s collaborate! You can reach out via:</p>
+        <ul>
+          <li>Email: <a href="mailto:divnaudi2003@gmail.com">divnaudi2003@gmail.com</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/divya-42a509207" target="_blank" rel="noopener">View Profile</a></li>
+        </ul>
+      </section>
+
     </div>
-    <footer>
-      <p>Connect: 
-        <a href="mailto:divnaudi2003@gmail.com">Email</a>
-        <a href="https://www.linkedin.com/in/divya-42a509207">LinkedIn</a>
-      </p>
-    </footer>
-  </div>
-  <script src="portfolio.js"></script>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 Divya | Built with ❤️ and code</p>
+  </footer>
+
 </body>
 </html>
