@@ -1,32 +1,23 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-  const container = document.querySelector('.hero-about-container');
-  const aboutSection = document.getElementById("about");
-  
-  navLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      const targetId = link.getAttribute("href").substring(1);
-      if(targetId === "about") {
-        e.preventDefault();
-        container.classList.add("about-active");
-        history.pushState(null, null, "#about");
-      } else if(targetId === "home") {
-        e.preventDefault();
-        container.classList.remove("about-active");
-        history.pushState(null, null, "#home");
-      } else {
-        container.classList.remove("about-active");
-      }
-    });
-  });
+window.addEventListener('scroll', () => {
+  const card = document.querySelector('.profile-card');
+  const footer = document.querySelector('footer');
+  if (!card || !footer) return;
 
-  // Optional: toggle about-active on scroll near about section
-  window.addEventListener("scroll", () => {
-    if (!container.classList.contains("about-active")) return;
-    const aboutTop = aboutSection.getBoundingClientRect().top;
-    if (aboutTop > window.innerHeight / 2) {
-      container.classList.remove("about-active");
-      history.pushState(null, null, "#home");
-    }
-  });
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const footerTop = footer.offsetTop;
+  const cardHeight = card.offsetHeight;
+  const gap = 20; // gap in pixels between card and footer
+  const fixedTop = 80; // fixed top offset (matches CSS)
+
+  const maxTop = footerTop - cardHeight - gap;
+
+  if (scrollTop + fixedTop > maxTop) {
+    card.style.position = 'absolute';
+    card.style.top = maxTop + 'px';
+    card.style.left = '40px';
+  } else {
+    card.style.position = 'fixed';
+    card.style.top = fixedTop + 'px';
+    card.style.left = '40px';
+  }
 });
