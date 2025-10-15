@@ -14,6 +14,7 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
+  margin-top: 80px;
 }
 
 a {
@@ -29,7 +30,7 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 99999;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
@@ -227,6 +228,7 @@ footer {
   font-weight: 600;
 }
 
+/* Responsive Styles */
 @media (max-width: 900px) {
   .hero-section {
     flex-direction: column-reverse;
@@ -254,4 +256,121 @@ footer {
   .hero-section {
     padding: 100px 2vw 40px;
   }
+}
+
+/* ===== Profile Sidebar Card ===== */
+.profile-card {
+  position: fixed;
+  top: 80px; /* sits below navbar */
+  left: 40px;
+  background: #232327;
+  border-radius: 32px;
+  box-shadow: 0 8px 32px rgba(18,18,35,0.22);
+  color: #fff;
+  width: 340px;
+  min-height: 520px;
+  max-height: 85vh;
+  padding: 36px 28px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 9999;
+  overflow: auto;
+}
+
+.profile-photo {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background: #18181b;
+}
+
+.profile-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 14px 0 4px 0;
+}
+
+.profile-role,
+.profile-location {
+  font-size: 1.08rem;
+  color: #b7b7b7;
+  margin-bottom: 3px;
+}
+
+.profile-socials {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 23px 0;
+}
+
+.profile-socials a {
+  color: #fff;
+  font-size: 1.2rem;
+  background: #28282d;
+  padding: 10px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-socials a:hover {
+  background: #a259ff;
+}
+
+.profile-cta {
+  display: block;
+  background: #a259ff;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 700;
+  padding: 13px 0;
+  width: 100%;
+  margin: 18px 0 0 0;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background .18s;
+}
+
+.profile-cta:hover {
+  background: #7c37da;
+}
+
+/* Adjust content margin to accommodate fixed sidebar */
+.wrapper, .main-content {
+  margin-left: 384px; /* 320 width + 64 gap */
+}
+
+/* Responsive profile sidebar */
+@media (max-width: 1100px) {
+  .profile-card {
+    position: static;
+    float: none;
+    margin: 96px auto 32px auto;
+    width: 90%;
+    max-width: 370px;
+  }
+  .wrapper, .main-content {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-card {
+    margin: 72px auto 24px auto;
+    padding: 24px 10px;
+  }
+}
+.profile-card.stuck {
+  position: absolute;
 }

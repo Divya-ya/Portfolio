@@ -1,4 +1,4 @@
-html{
+html {
   scroll-behavior: smooth;
 }
 body {
@@ -11,9 +11,11 @@ body {
 }
 
 .wrapper {
-  max-width: 900px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 0 20px;
+  margin-top: 80px;
+  margin-left: calc(38% + 10px); /* Center main content offset from center */
 }
 
 a {
@@ -261,7 +263,7 @@ footer {
 .profile-card {
   position: fixed;
   top: 80px; /* sits below navbar */
-  left: 40px;
+  left: calc(40% - 420px); /* center with gap */
   background: #232327;
   border-radius: 32px;
   box-shadow: 0 8px 32px rgba(18,18,35,0.22);
@@ -347,7 +349,7 @@ footer {
 
 /* Adjust content margin to accommodate fixed sidebar */
 .wrapper, .main-content {
-  margin-left: 384px; /* 320 width + 64 gap */
+  /* margin-left removed here because .wrapper already has margin-left for centering */
 }
 
 /* Responsive profile sidebar */
@@ -358,9 +360,11 @@ footer {
     margin: 96px auto 32px auto;
     width: 90%;
     max-width: 370px;
+    left: auto;
   }
   .wrapper, .main-content {
     margin-left: 0;
+    margin-top: 80px; /* Keep margin-top on mobile still */
   }
 }
 
