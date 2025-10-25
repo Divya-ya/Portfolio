@@ -1,4 +1,6 @@
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
@@ -13,10 +15,12 @@ body {
   margin: 0 auto;
   padding: 0 20px;
   margin-top: 80px;
-  margin-left: calc(38% + 10px);
+  margin-left: calc(38% + 10px); /* Center main content offset from center */
 }
 
-a { text-decoration: none; }
+a {
+  text-decoration: none;
+}
 
 .sidebar-nav {
   display: flex;
@@ -64,6 +68,111 @@ a { text-decoration: none; }
   transform: scale(1.1);
 }
 
+.hero-buttons {
+  margin-top: 22px;
+  display: flex;
+  gap: 18px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(34,97,235,0.12);
+}
+
+.hire-btn {
+  background: #fff;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+  transition: background 0.3s, color 0.3s, font-weight 0.3s;
+}
+
+.hire-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+}
+
+.works-btn {
+  background: #fff;
+  color: #2563eb;
+  border: 2px solid #2563eb;
+  transition: background 0.3s, color 0.3s, font-weight 0.3s;
+}
+
+.works-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  border: 2px solid #2563eb;
+  font-weight: 700;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background: #f8fafc;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  border-radius: 0;
+}
+
+.hero-info {
+  flex: 1 1 50%;
+  padding: 0 3vw;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-info h1 {
+  font-size: clamp(2rem, 7vw, 5rem);
+  margin: 0 0 1rem;
+  color: #18181b;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.hero-info .dot {
+  color: #2563eb;
+}
+
+.hero-info h2 {
+  margin: 0 0 1rem;
+  color: #2563eb;
+  font-size: clamp(1.2rem, 3vw, 2.5rem);
+  font-weight: 700;
+}
+
+.hero-info .subtitle {
+  color: #475569;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
+.hero-pic {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-pic img {
+  height: 100vh;
+  max-width: 100%;
+  object-fit: cover;
+  background: #fff;
+}
+
 section {
   background: #374151;
   margin: 40px 0;
@@ -71,10 +180,31 @@ section {
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.25);
   scroll-margin-top: 100px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+  animation-delay: 0.2s;
 }
 
-section h2 { font-size: 2rem; color: #bfdbfe; }
-ul { list-style-type: disc; padding-left: 20px; line-height: 1.6; }
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section h2 {
+  font-size: 2rem;
+  padding: 0;
+  margin-bottom: 0;
+  color: #bfdbfe;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  line-height: 1.6;
+}
 
 section#projects li {
   display: block;
@@ -99,10 +229,41 @@ footer {
   font-weight: 600;
 }
 
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .hero-section {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 80px 5vw 40px;
+  }
+  .hero-pic img {
+    width: 60vw;
+    max-width: 280px;
+    height: auto;
+    border: 7px solid #2563eb;
+    box-shadow: 0 8px 32px rgba(37,99,235,0.12);
+  }
+  .hero-info {
+    align-items: center;
+    padding: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-pic img {
+    width: 72vw;
+    max-width: 210px;
+  }
+  .hero-section {
+    padding: 100px 2vw 40px;
+  }
+}
+
+/* ===== Profile Sidebar Card ===== */
 .profile-card {
   position: fixed;
-  top: 80px;
-  left: calc(40% - 420px);
+  top: 80px; /* sits below navbar */
+  left: calc(40% - 420px); /* center with gap */
   background: #232327;
   border-radius: 32px;
   box-shadow: 0 8px 32px rgba(18,18,35,0.22);
@@ -110,7 +271,7 @@ footer {
   width: 340px;
   min-height: 520px;
   max-height: 85vh;
-  padding: 36px 28px 32px;
+  padding: 36px 28px 32px 28px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -125,11 +286,25 @@ footer {
   object-fit: cover;
   border-radius: 16px;
   margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   background: #18181b;
 }
 
-.profile-name { font-size: 2rem; font-weight: 700; margin: 14px 0 4px; }
-.profile-role, .profile-location { font-size: 1.08rem; color: #b7b7b7; margin-bottom: 3px; }
+.profile-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 14px 0 4px 0;
+}
+
+.profile-role,
+.profile-location {
+  font-size: 1.08rem;
+  color: #b7b7b7;
+  margin-bottom: 3px;
+}
 
 .profile-socials {
   display: flex;
@@ -150,7 +325,9 @@ footer {
   justify-content: center;
 }
 
-.profile-socials a:hover { background: #a259ff; }
+.profile-socials a:hover {
+  background: #a259ff;
+}
 
 .profile-cta {
   display: block;
@@ -160,39 +337,43 @@ footer {
   font-weight: 700;
   padding: 13px 0;
   width: 100%;
-  margin: 18px 0 0;
+  margin: 18px 0 0 0;
   text-decoration: none;
   font-size: 1.1rem;
   transition: background .18s;
 }
 
-.profile-cta:hover { background: #7c37da; }
+.profile-cta:hover {
+  background: #7c37da;
+}
 
-@media (max-width: 768px) {
-  body { background: #1f2937; overflow-x: hidden; }
+/* Adjust content margin to accommodate fixed sidebar */
+.wrapper, .main-content {
+  /* margin-left removed here because .wrapper already has margin-left for centering */
+}
+
+/* Responsive profile sidebar */
+@media (max-width: 1100px) {
   .profile-card {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 92%;
-    max-width: 380px;
-    margin: 90px auto 24px auto;
-    border-radius: 20px;
-    padding: 28px 16px;
+    position: static;
+    float: none;
+    margin: 96px auto 32px auto;
+    width: 90%;
+    max-width: 370px;
+    left: auto;
   }
-  .sidebar-nav { position: sticky; top: 0; width: 100%; z-index: 1000; }
   .wrapper, .main-content {
-    margin: 0 auto;
-    width: 94%;
-    padding: 0 10px;
-    margin-top: 20px;
+    margin-left: 0;
+    margin-top: 80px; /* Keep margin-top on mobile still */
   }
-  section {
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 10px;
-    background: #374151;
-    text-align: left;
+}
+
+@media (max-width: 600px) {
+  .profile-card {
+    margin: 72px auto 24px auto;
+    padding: 24px 10px;
   }
-  footer { font-size: 0.9rem; padding: 16px; }
+}
+.profile-card.stuck {
+  position: absolute;
 }
