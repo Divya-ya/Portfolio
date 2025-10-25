@@ -4,16 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Divya - Portfolio</title>
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ===== Navigation ===== -->
+  <!-- Profile Sidebar Card -->
+  <aside class="profile-card">
+    <img src="profile.png" alt="Your Photo" class="profile-photo" />
+    <h2 class="profile-name">Divya</h2>
+    <p class="profile-role">Software Enthusiast</p>
+    <p class="profile-location">India</p>
+    <div class="profile-socials">
+      <a href="https://www.linkedin.com/in/divya-42a509207/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <!-- <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a> --> 
+      <a href="mailto:divnaudi2003@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
+    </div>
+    <a href="#contact" class="profile-cta">Let's Talk</a>
+  </aside>
+
+  <!-- Navigation -->
   <header>
     <nav class="sidebar-nav" aria-label="Main Navigation">
       <div class="logo">DIVYA</div>
       <div class="nav-links">
-        <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#resume">Resume</a>
         <a href="#projects">Projects</a>
@@ -21,24 +36,6 @@
       </div>
     </nav>
   </header>
-
-  <!-- ===== HERO SECTION ===== -->
-  <section id="home" class="hero-section">
-    <div class="hero-info">
-      <h1>Hello<span class="dot">!</span></h1>
-      <h2>I'm Divya — a software enthusiast</h2>
-      <p class="subtitle">
-        I build sleek, smart solutions and love new tech challenges.
-      </p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn hire-btn">Hire Me</a>
-        <a href="#projects" class="btn works-btn">My WORKS</a>
-      </div>
-    </div>
-    <div class="hero-pic">
-      <img src="profile.png" alt="Portrait of Divya" id="profile-pic" />
-    </div>
-  </section>
 
   <!-- ===== MAIN CONTENT ===== -->
   <main class="main-content">
@@ -78,17 +75,6 @@
           <li><strong>Project 2:</strong> Description of Project 2</li>
         </ul>
       </section>
-
-      <!-- Contact Section -->
-      <section id="contact">
-        <h2>Contact</h2>
-        <p>Let’s collaborate! You can reach out via:</p>
-        <ul>
-          <li>Email: <a href="mailto:divnaudi2003@gmail.com">divnaudi2003@gmail.com</a></li>
-          <li>LinkedIn: <a href="https://www.linkedin.com/in/divya-42a509207" target="_blank" rel="noopener">View Profile</a></li>
-        </ul>
-      </section>
-
     </div>
   </main>
 
@@ -96,6 +82,6 @@
   <footer>
     <p>© 2025 Divya | Built with ❤️ and code</p>
   </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
