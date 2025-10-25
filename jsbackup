@@ -6,18 +6,20 @@ window.addEventListener('scroll', () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   const footerTop = footer.offsetTop;
   const cardHeight = card.offsetHeight;
-  const gap = 20; // gap in pixels between card and footer
+  const gap = 20; // gap between card and footer
   const fixedTop = 80; // fixed top offset (matches CSS)
-
   const maxTop = footerTop - cardHeight - gap;
+
+  // Keep your CSS left positioning instead of forcing 40px
+  const cssLeft = getComputedStyle(card).left;
 
   if (scrollTop + fixedTop > maxTop) {
     card.style.position = 'absolute';
     card.style.top = maxTop + 'px';
-    card.style.left = '40px';
+    card.style.left = cssLeft; // preserve CSS-defined left value
   } else {
     card.style.position = 'fixed';
     card.style.top = fixedTop + 'px';
-    card.style.left = '40px';
+    card.style.left = cssLeft; // preserve CSS-defined left value
   }
 });

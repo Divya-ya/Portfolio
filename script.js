@@ -1,4 +1,7 @@
 window.addEventListener('scroll', () => {
+  // Skip scroll logic on narrow mobile screens
+  if (window.innerWidth <= 768) return;
+
   const card = document.querySelector('.profile-card');
   const footer = document.querySelector('footer');
   if (!card || !footer) return;
@@ -10,16 +13,26 @@ window.addEventListener('scroll', () => {
   const fixedTop = 80; // fixed top offset (matches CSS)
   const maxTop = footerTop - cardHeight - gap;
 
-  // Keep your CSS left positioning instead of forcing 40px
+  // Keep your CSS-defined left position
   const cssLeft = getComputedStyle(card).left;
 
   if (scrollTop + fixedTop > maxTop) {
     card.style.position = 'absolute';
     card.style.top = maxTop + 'px';
-    card.style.left = cssLeft; // preserve CSS-defined left value
+    card.style.left = cssLeft;
   } else {
     card.style.position = 'fixed';
     card.style.top = fixedTop + 'px';
-    card.style.left = cssLeft; // preserve CSS-defined left value
+    card.style.left = cssLeft;
+  }
+});
+
+// Optional: reset card position if resized to mobile
+window.addEventListener('resize', () => {
+  const card = document.querySelector('.profile-card');
+  if (window.innerWidth <= 768 && card) {
+    card.style.position = 'relative';
+    card.style.top = 'auto';
+    card.style.left = 'auto';
   }
 });
