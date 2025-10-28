@@ -1,6 +1,5 @@
-// Handle sticky profile card scroll behavior on desktop only
 window.addEventListener('scroll', () => {
-  // Skip scroll logic for mobile and tablets
+  // Skip scroll logic on narrow mobile screens
   if (window.innerWidth <= 768) return;
 
   const card = document.querySelector('.profile-card');
@@ -14,7 +13,7 @@ window.addEventListener('scroll', () => {
   const fixedTop = 80; // fixed top offset (matches CSS)
   const maxTop = footerTop - cardHeight - gap;
 
-  // Keep CSS-defined left position consistent
+  // Keep your CSS-defined left position
   const cssLeft = getComputedStyle(card).left;
 
   if (scrollTop + fixedTop > maxTop) {
@@ -28,25 +27,12 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Reset profile card position when resizing to mobile
+// Optional: reset card position if resized to mobile
 window.addEventListener('resize', () => {
   const card = document.querySelector('.profile-card');
-  if (!card) return;
-
-  if (window.innerWidth <= 768) {
-    // Reset styles for mobile view
+  if (window.innerWidth <= 768 && card) {
     card.style.position = 'relative';
     card.style.top = 'auto';
     card.style.left = 'auto';
-  } else {
-    // Restore desktop sticky behavior positioning
-    card.style.position = 'fixed';
-    card.style.top = '80px';
-  }
-
-  // Adjust navbar height dynamically for mobile
-  const nav = document.querySelector('.sidebar-nav');
-  if (window.innerWidth <= 768 && nav) {
-    nav.style.height = 'auto';
   }
 });
