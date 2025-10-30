@@ -502,16 +502,16 @@ form input, form textarea {
 }
 
 form button {
-  width: 100%;
-  padding: 10px;
+  display: block;
+  margin: 20px auto 0 auto; /* centers the button */
+  width: auto; /* prevents stretching across full width */
+  padding: 10px 24px; /* optional: makes it look nicer */
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  box-sizing: border-box;
 }
-
 
 form button:hover {
   background-color: #0056b3;
