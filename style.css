@@ -1,5 +1,8 @@
 html {
   scroll-behavior: smooth;
+  margin: 0%;
+  padding: 0%;
+  height: 100%;
 }
 
 body {
@@ -203,13 +206,16 @@ ul {
 
 /* ===== FOOTER ===== */
 footer {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  align-items: center;    /* centers vertically */
+  height: 50px;           /* adjust as needed */
+  margin: 0;
+  padding: 0;
+  background: #2563eb;       /* optional — if you use dark footer */
+  color: white;           /* optional text color */
   text-align: center;
-  padding: 20px;
-  background: #2563eb;
-  color: #dbeafe;
-  font-weight: 600;
 }
-
 /* ===== PROFILE CARD ===== */
 .profile-card {
   position: fixed;
@@ -274,12 +280,12 @@ footer {
 }
 
 .profile-socials a:hover {
-  background: #a259ff;
+  background: #2563eb;
 }
 
 .profile-cta {
   display: block;
-  background: #a259ff;
+  background: #2563eb;
   color: #fff;
   border-radius: 8px;
   font-weight: 700;
@@ -292,7 +298,7 @@ footer {
 }
 
 .profile-cta:hover {
-  background: #7c37da;
+  background: #2563eb;
 }
 
 .profile-card.stuck {
@@ -401,4 +407,117 @@ html, body {
   max-width: 100%;
   white-space: normal;
   word-wrap: break-word;
+}
+/* Contact Section */
+#contact {
+  padding: 60px 20px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.contact-form {
+  max-width: 400px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.contact-form label {
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid black;
+  font-size: 1rem;
+}
+
+.contact-form button {
+  background-color: #ff4081;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #e73370;
+}
+/* ===== Popup Form Styling ===== */
+.form-content h2 {
+  text-align: center;
+  color: #333; /* optional – change color if needed */
+  margin-bottom: 20px; /* adds some space below the heading */
+}
+
+.form-popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+.form-popup.hidden {
+  display: none;
+}
+
+.form-content {
+  background: #c5d5e8;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 22px;
+  cursor: pointer;
+  color: black;
+}
+
+form input, form textarea {
+  color: black;
+  width: 100%;
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  width: 420px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+
+form button:hover {
+  background-color: #0056b3;
+}
+/* Change color of text inside the popup form */
+.form-content h2,
+.form-content label {
+  color: black; /* Change this to any color you want */
 }

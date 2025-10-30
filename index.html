@@ -4,28 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Divya - Portfolio</title>
-  <!-- Font Awesome for social icons -->
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- Your CSS -->
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Prevent nav overflow on mobile */
-    @media (max-width: 768px) {
-      .sidebar-nav a {
-        font-size: 0.85rem;
-        padding: 0 4px;
-      }
-      .logo {
-        font-size: 1.1rem;
-        margin-right: 16px;
-      }
-      .nav-links {
-        gap: 10px;
-      }
-      body {
-        overflow-x: hidden;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -39,7 +23,7 @@
       <a href="https://www.linkedin.com/in/divya-42a509207/" target="_blank"><i class="fab fa-linkedin"></i></a>
       <a href="mailto:divnaudi2003@gmail.com" target="_blank"><i class="far fa-envelope"></i></a>
     </div>
-    <a href="#contact" class="profile-cta">Let's Talk</a>
+    <button class="profile-cta lets-talk">Let's Talk</button>
   </aside>
 
   <!-- Navigation -->
@@ -96,12 +80,33 @@
     </div>
   </main>
 
+  <!-- ===== Popup Form ===== -->
+  <div id="formPopup" class="form-popup hidden">
+    <div class="form-content">
+      <span class="close-btn" id="closeForm">&times;</span>
+      <h2>Let's Talk</h2>
+      <form action="https://formspree.io/f/xkgpvgpv" method="POST">
+        <label>Your Name</label>
+        <input type="text" name="name" required />
+
+        <label>Your Email</label>
+        <input type="email" name="email" required />
+
+        <label>Your Message</label>
+        <textarea name="message" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
   <!-- ===== FOOTER ===== -->
   <footer>
     <p>© 2025 Divya | Built with ❤️ and code</p>
   </footer>
 
-  <!-- External JS -->
+  <!-- JS Files -->
   <script src="script.js"></script>
+  <script src="form.js"></script>
 </body>
 </html>

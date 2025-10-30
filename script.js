@@ -46,3 +46,55 @@ window.addEventListener('orientationchange', () => {
     card.style.left = 'auto';
   }
 });
+
+
+// ===== FORM POPUP LOGIC (newly added) =====
+
+// Create the form HTML dynamically
+const formHTML = `
+  <div id="formPopup" class="form-popup hidden">
+    <div class="form-content">
+      <span class="close-btn" id="closeForm">&times;</span>
+      <h2>Let's Talk</h2>
+      <form id="contactForm">
+        <label>Name:</label>
+        <input type="text" id="name" required />
+
+        <label>Email:</label>
+        <input type="email" id="email" required />
+
+        <label>Message:</label>
+        <textarea id="message" required></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+`;
+document.body.insertAdjacentHTML('beforeend', formHTML);
+
+// Handle open/close
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.querySelector('.lets-talk'); // <-- button class
+  const popup = document.getElementById('formPopup');
+  const closeBtn = document.getElementById('closeForm');
+  const form = document.getElementById('contactForm');
+
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    popup.classList.remove('hidden');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    popup.classList.add('hidden');
+  });
+
+  // Handle form submit
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("Message sent! Thank you for reaching out.");
+    popup.classList.add('hidden');
+    form.reset();
+  });
+});

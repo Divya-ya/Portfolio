@@ -36,3 +36,13 @@ window.addEventListener('resize', () => {
     card.style.left = 'auto';
   }
 });
+// === FIX: ensure card resets properly when rotating or resizing ===
+window.addEventListener('orientationchange', () => {
+  const card = document.querySelector('.profile-card');
+  if (!card) return;
+  if (window.innerWidth <= 1100) {
+    card.style.position = 'static';
+    card.style.top = 'auto';
+    card.style.left = 'auto';
+  }
+});
